@@ -6,6 +6,8 @@ namespace GuiTestLib
 	{
 		public ResourceUsage ()
 		{
+			string test = "success!";
+			string test2 = "more success!";
 		}
 	}
 }

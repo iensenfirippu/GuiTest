@@ -6,6 +6,7 @@ namespace GuiTestLib
 	{
 		public UsagePoint ()
 		{
+			2
 		}
 	}
 }
