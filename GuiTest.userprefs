@@ -1,12 +1,19 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GuiTestLib/ResourceUsage.cs">
+﻿<Properties GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Experiment1-GTK/MainWindow.cs">
     <Files>
-      <File FileName="GuiTestLib/ResourceUsage.cs" Line="1" Column="1" />
+      <File FileName="GuiTestLib/GuiTracker.cs" Line="36" Column="29" />
+      <File FileName="GuiTestLib/ResourceUsage.cs" Line="28" Column="28" />
+      <File FileName="GuiTestLib/ResourceSnapshot.cs" Line="1" Column="1" />
+      <File FileName="GuiTestLib/Random.cs" Line="1" Column="1" />
+      <File FileName="Experiment1-GTK/MainWindow.cs" Line="17" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
+        <State expanded="True">
+          <Node name="Experiment1-GTK" expanded="True">
+            <Node name="MainWindow.cs" selected="True" />
+          </Node>
           <Node name="GuiTestLib" expanded="True" />
         </State>
       </Pad>
