@@ -15,6 +15,7 @@ public partial class MainWindow: Gtk.Window
 	{
 		Build();
 		
+		// just for kicks
 		DoStuff();
 	}
 	
