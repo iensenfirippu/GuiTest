@@ -1,4 +1,4 @@
 GuiTest
 =======
 
-Computer Science main project: Test performance and effectiveness of WinForms and GTK.
+Computer Science main project: Test performance and effectiveness of GTK.
