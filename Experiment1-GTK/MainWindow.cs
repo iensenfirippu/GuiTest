@@ -4,18 +4,18 @@ using GuiTestLib;
 
 public partial class MainWindow: Gtk.Window
 {
-	private const int COLUMNS = 70; //10;
-	private const int ROWS = 150; //20;
-	private const int LABELWIDTH = 100;
-	private const int ENTRYWIDTH = 100;
+	private const int COLUMNS = 10;
+	private const int ROWS = 20;
+	private const int LABELWIDTH = 50;
+	private const int ENTRYWIDTH = 50;
 	
-	private GuiTracker _gt = new GuiTracker("Experiment1-GTK");
+	private GuiTracker _gt = new GuiTracker("Experiment1", GuiTracker.Toolkit.MonoGtk);
+	private int controlsloaded = 0;
 	
 	public MainWindow(): base (Gtk.WindowType.Toplevel)
 	{
 		Build();
 		
-		// just for kicks2
 		DoStuff();
 	}
 	
@@ -24,6 +24,7 @@ public partial class MainWindow: Gtk.Window
 		ScrolledWindow sw = new ScrolledWindow();
 		sw.SetPolicy(PolicyType.Automatic, PolicyType.Automatic);
 		Fixed fv = new Fixed();
+		fv.BorderWidth = 5;
 		Table table = new Table(ROWS, COLUMNS, false);
 		
 		for (uint y = 0; y < ROWS; y++)
@@ -36,12 +37,14 @@ public partial class MainWindow: Gtk.Window
 					label.WidthRequest = LABELWIDTH;
 					label.SetAlignment(1f, 0.5f); 
 					label.Justify = Justification.Right;
+					//label.ExposeEvent += OnWidgetExposed;
 					table.Attach(label, x, x+1, y, y+1, AttachOptions.Fill, AttachOptions.Fill, 5, 0);
 				}
 				else
 				{
 					Entry entry = new Entry(_gt.Random.ShortString);
 					entry.WidthRequest = ENTRYWIDTH;
+					entry.ExposeEvent += OnWidgetExposed;
 					table.Attach(entry, x, x+1, y, y+1);
 				}
 			}
@@ -52,11 +55,17 @@ public partial class MainWindow: Gtk.Window
 		this.Add(sw);
 
 		this.ShowAll();
-		
-		_gt.Stop();
-		Console.WriteLine("Executed in: {0}", _gt.ExecutionTime.ToString());
-		Console.WriteLine("CPU Usage: {0}", (_gt.Usage.Cpu / System.Environment.ProcessorCount).ToString());
-		Console.WriteLine("RAM Usage: {0}", _gt.Usage.Ram.ToString());
+	}
+	
+	protected void OnWidgetExposed(object sender, ExposeEventArgs a)
+	{
+		controlsloaded++;
+		if (controlsloaded == 100)
+		{
+			_gt.Stop();
+			//Console.WriteLine("file saved");
+			this.OnDeleteEvent(this, new DeleteEventArgs());
+		}
 	}
 
 	protected void OnDeleteEvent(object sender, DeleteEventArgs a)

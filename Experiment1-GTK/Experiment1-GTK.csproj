@@ -49,6 +49,9 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Mono.Posix" />
+    <Reference Include="GuiTestLib">
+      <HintPath>..\..\GuiTestLib\GuiTestLib\bin\Release\GuiTestLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
