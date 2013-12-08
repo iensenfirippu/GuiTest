@@ -1,5 +1,6 @@
 using System;
 using Gtk;
+using GuiTestLib;
 
 namespace Experiment1GTK
 {
@@ -8,7 +9,7 @@ namespace Experiment1GTK
 		public static void Main(string[] args)
 		{
 			Application.Init();
-			MainWindow win = new MainWindow();
+			MainWindow win = new MainWindow(new GuiTracker("Experiment1", GuiTracker.Framework.Mono, GuiTracker.Toolkit.Gtk));
 			win.Show();
 			Application.Run();
 		}

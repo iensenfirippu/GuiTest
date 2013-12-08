@@ -9,12 +9,13 @@ public partial class MainWindow: Gtk.Window
 	private const int LABELWIDTH = 50;
 	private const int ENTRYWIDTH = 50;
 	
-	private GuiTracker _gt = new GuiTracker("Experiment1", GuiTracker.Toolkit.MonoGtk);
+	private GuiTracker _gt;
 	private int controlsloaded = 0;
 	
-	public MainWindow(): base (Gtk.WindowType.Toplevel)
+	public MainWindow(GuiTracker tracker): base (Gtk.WindowType.Toplevel)
 	{
 		Build();
+		_gt = tracker;
 		
 		DoStuff();
 	}
@@ -64,7 +65,10 @@ public partial class MainWindow: Gtk.Window
 		{
 			_gt.Stop();
 			//Console.WriteLine("file saved");
-			this.OnDeleteEvent(this, new DeleteEventArgs());
+			//this.Destroy();
+			//this.OnDeleteEvent(this, new DeleteEventArgs());
+			Application.Quit();
+			a.RetVal = true;
 		}
 	}
 
