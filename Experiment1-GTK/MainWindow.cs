@@ -4,6 +4,7 @@ using GuiTestLib;
 
 public partial class MainWindow: Gtk.Window
 {
+	private const bool AUTOCLOSE = true;
 	private const int COLUMNS = 10;
 	private const int ROWS = 20;
 	private const int LABELWIDTH = 50;
@@ -17,7 +18,9 @@ public partial class MainWindow: Gtk.Window
 		Build();
 		_gt = tracker;
 		
+		_gt.Usage.TakeSnapshot("init start");
 		DoStuff();
+		_gt.Usage.TakeSnapshot("init end");
 	}
 	
 	private void DoStuff()
@@ -61,14 +64,20 @@ public partial class MainWindow: Gtk.Window
 	protected void OnWidgetExposed(object sender, ExposeEventArgs a)
 	{
 		controlsloaded++;
-		if (controlsloaded == 100)
+		if (controlsloaded == 1)
 		{
+			_gt.Usage.TakeSnapshot("draw start");
+		}
+		else if (controlsloaded == 100)
+		{
+			_gt.Usage.TakeSnapshot("draw end");
 			_gt.Stop();
-			//Console.WriteLine("file saved");
-			//this.Destroy();
-			//this.OnDeleteEvent(this, new DeleteEventArgs());
-			Application.Quit();
-			a.RetVal = true;
+			
+			if (AUTOCLOSE)
+			{
+				Application.Quit();
+				a.RetVal = true;
+			}
 		}
 	}
 
