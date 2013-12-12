@@ -41,7 +41,7 @@ public partial class MainWindow: Gtk.Window
 					label.WidthRequest = LABELWIDTH;
 					label.SetAlignment(1f, 0.5f); 
 					label.Justify = Justification.Right;
-					//label.ExposeEvent += OnWidgetExposed;
+					//label.ExposeEvent += OnWidgetExposed; // The expose event of the label is never fired
 					table.Attach(label, x, x+1, y, y+1, AttachOptions.Fill, AttachOptions.Fill, 5, 0);
 				}
 				else
