@@ -64,7 +64,7 @@ public partial class MainWindow: Gtk.Window
 		fv.Put(table, 0, 0);
 		sw.AddWithViewport(fv);
 		this.Add(sw);
-		this.Fullscreen();
+		this.Maximize();
 
 		this.ShowAll();
 	}
