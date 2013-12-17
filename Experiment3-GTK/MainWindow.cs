@@ -3,18 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using Gtk;
 using GuiTestLib;
-/*using System;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;*/
 
 public partial class MainWindow: Gtk.Window
 {
-	private const bool AUTOCLOSE = false;
+	private const bool AUTOCLOSE = true;
 	private const int COLUMNS =	2;
 	private const int ROWS = 10;
 	private const int LABELWIDTH = 300;
@@ -43,7 +35,6 @@ public partial class MainWindow: Gtk.Window
 
 	private void DoStuff()
 	{
-
 		ScrolledWindow sw = new ScrolledWindow();
 		sw.SetPolicy(PolicyType.Automatic, PolicyType.Automatic);
 		Fixed fv = new Fixed();
