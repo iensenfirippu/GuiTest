@@ -4,7 +4,7 @@ using GuiTestLib;
 
 public partial class MainWindow: Gtk.Window
 {
-	private const bool AUTOCLOSE = true;
+	private const bool AUTOCLOSE = false;
 	private const int COLUMNS = 10;
 	private const int ROWS = 20;
 	private const int LABELWIDTH = 50;
@@ -72,10 +72,11 @@ public partial class MainWindow: Gtk.Window
 		else if (controlsloaded == 100)
 		{
 			_gt.Usage.TakeSnapshot("draw end");
-			_gt.Stop();
 			
 			if (AUTOCLOSE)
 			{
+				_gt.Stop();
+				
 				Application.Quit();
 				a.RetVal = true;
 			}

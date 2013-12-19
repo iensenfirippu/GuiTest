@@ -64,11 +64,11 @@ public partial class MainWindow: Gtk.Window
 				_expectedcells = 8;
 				SqlQuery("SELECT CategoryName FROM Categories");
 				break;
-			case 2:
+			/*case 2:
 				_expectedcells = 30;
 				SqlQuery("SELECT CustomerID, CompanyName, ContactName, ContactTitle, City, Country FROM Customers LIMIT 55,30");
 				break;
-			/*case 3:
+			case 3:
 				_expectedcells = 45;
 				SqlQuery("SELECT LastName, FirstName, Title, City, Region, Country FROM Employees");
 				break;
@@ -82,14 +82,15 @@ public partial class MainWindow: Gtk.Window
 				break;*/
 			case 6:
 				_gt.Usage.TakeSnapshot("draw end");
-				_gt.Stop();
 				
 				if (AUTOCLOSE)
 				{
+					_gt.Stop();
+					
 					Application.Quit();
 					//this.RetVal = true;
 				}
-				else { Console.WriteLine("finished"); }
+				//else { Console.WriteLine("finished"); }
 				break;
 		}
 	}
@@ -132,7 +133,7 @@ public partial class MainWindow: Gtk.Window
 		}
 		catch (SqliteException ex)
 		{
-			Console.WriteLine(_connectionstring + ": " + ex.Message + ": " + ex.InnerException);
+			//Console.WriteLine(_connectionstring + ": " + ex.Message + ": " + ex.InnerException);
 		}
 		cmd.Connection.Close();
 		
@@ -154,7 +155,7 @@ public partial class MainWindow: Gtk.Window
 		}
 		else
 		{
-			Console.WriteLine(_paintedcells);
+			//Console.WriteLine(_paintedcells);
 		}
 	}
 

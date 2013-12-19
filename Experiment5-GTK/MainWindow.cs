@@ -6,7 +6,7 @@ using GuiTestLib;
 
 public partial class MainWindow: Gtk.Window
 {
-	private const bool AUTOCLOSE = true;
+	private const bool AUTOCLOSE = false;
 	private const int COLUMNS = 2;
 	private const int ROWS = 10;
 	private const int LABELWIDTH = 100;

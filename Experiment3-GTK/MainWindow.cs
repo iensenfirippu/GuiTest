@@ -6,7 +6,7 @@ using GuiTestLib;
 
 public partial class MainWindow: Gtk.Window
 {
-	private const bool AUTOCLOSE = true;
+	private const bool AUTOCLOSE = false;
 	private const int COLUMNS =	2;
 	private const int ROWS = 10;
 	private const int LABELWIDTH = 300;
@@ -84,16 +84,17 @@ public partial class MainWindow: Gtk.Window
 		{
 			_repetitions++;
 			_gt.Usage.TakeSnapshot("draw end");
-			_gt.Stop();
 
 			if (AUTOCLOSE)
 			{
+				_gt.Stop();
+				
 				Application.Quit();
 				a.RetVal = true;
 			}
 			else
 			{
-				Console.WriteLine("finished");
+				//Console.WriteLine("finished");
 				foreach (Entry text in _textboxes)
 				{
 					text.ExposeEvent -= OnWidgetExposed;
